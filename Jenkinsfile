@@ -1,6 +1,6 @@
 pipeline{
   environment {
-    registry = "erandiranaweera/node-helloworld"
+    registry = "erandiranaweera/nodehelloworld"
     registryCredential = 'dockerhub'
     dockerImage = ''
   }
