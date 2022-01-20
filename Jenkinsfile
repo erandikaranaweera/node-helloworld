@@ -1,6 +1,6 @@
 pipeline{
   environment {
-    registry = "erandiranaweera/nodehelloworld"
+    registry = ("erandiranaweera/nodehelloworld").toLowerCase()
     registryCredential = 'dockerhub'
     dockerImage = ''
   }
@@ -16,7 +16,7 @@ pipeline{
         stage('Building image') {
             steps{
                 script {
-                  dockerImage = (docker.build registry + ":latest").toLowerCase()
+                  dockerImage = docker.build registry + ":latest"
                 }
              }
           }
