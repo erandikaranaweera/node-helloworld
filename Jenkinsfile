@@ -1,10 +1,10 @@
 pipeline{
   environment {
     registry = ("erandiranaweera/nodehelloworld").toLowerCase()
-    registryCredential = 'dockerhub'
-    dockerImage = ''
+    registrycredential = 'docker-hub'
+    dockerimage = ''
   }
-  agent windows
+  agent any
     stages {
         stage('Build'){
             steps{
@@ -16,7 +16,7 @@ pipeline{
         stage('Building image') {
             steps{
                 script {
-                  dockerImage = docker.build("erandiranaweera/nodeapp").toLowerCase()
+                  dockerimage = docker.build("erandiranaweera/nodeapp").toLowerCase()
                 }
              }
           }
@@ -24,8 +24,8 @@ pipeline{
               steps{
                   script 
                     {
-                        docker.withRegistry( '', registryCredential ) {
-                            dockerImage.push()
+                        docker.withRegistry( '', registrycredential ) {
+                            dockerimage.push()
                         }
                    } 
                }
